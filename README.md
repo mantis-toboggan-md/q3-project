@@ -21,12 +21,12 @@
 
 ## Technologies
   #### Frontend:
-    * React
-    * Redux
-    * Reactstrap
+  * React
+  * Redux
+  * Reactstrap
   #### Backend:
-    * Node
-    * Express
-    * PostgreSQL
+  * Node
+  * Express
+  * PostgreSQL
 
     
