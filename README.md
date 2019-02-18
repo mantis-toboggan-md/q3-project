@@ -1,5 +1,4 @@
-# Q3 Project: Aquarium Storefront 
-
+# Q3 Project: Aquarium Store
 ## Description
   This website will be an aquatic plant store, designed to be friendly towards indexperienced hobbyists. Inventory may be filtered by the growing requirments (and therefore difficulty) of the plants, making it easy to purchase plants that will likely thrive in a given aquarium.
   
