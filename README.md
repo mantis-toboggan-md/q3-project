@@ -32,6 +32,28 @@
   * PostgreSQL
 
 ## Feature List
-  #### Customers
+  ### Minimum: 
+   #### Customers
+   * List of plants currently for sale, along with growing difficulty
+   * Sort by:
+        * Size (foreground, midground, background)
+        * Ease of growth
+        * Price
+   * Input tank parameters, get appropriate plant suggestions
+
+   #### Owner/Operator
+   * Update inventory through website
+   * Inventory should be automatically marked as out of stock
   
-  #### Owner/Operator
+  ### Stretch:
+   * Optionally create account to save and review previous orders 
+      * Make personal notes on previous orders (e.g. mark a product that did well for you in the past)
+   * Get plant recommendations to control certain types of algae (aleopathy)
+   * Informational pages:
+      * explain the light/CO2/micronutrient balancing act
+      * overview of aleopathy*
+      * diagnose common micronutrient defficencies
+      * isolate likely sources of algae problems based off tank parameters*
+      
+*Not common knowledge; I need to review literature
+   
