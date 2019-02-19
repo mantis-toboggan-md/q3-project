@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPlants } from '../actions'
 import Inventory from './Inventory'
+import Filters from './Filters'
 import Cart from './Cart'
 import {
   Container,
@@ -19,11 +20,10 @@ class Main extends React.Component {
     return(
       <Container fluid>
         <Row>
-          <Col xs = '12'>
+          <Col xs = '3'>
+            <Filters/>
           </Col>
-        </Row>
-        <Row>
-          <Col xs = {{size:6, offset:3}}>
+          <Col xs = {{size:6}}>
             {inventory}
           </Col>
           <Col xs = '3'>

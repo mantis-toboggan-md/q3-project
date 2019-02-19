@@ -23,3 +23,18 @@ export function fetchPlants(){
     })
   }
 }
+
+export const FILTER_BY = 'FILTER_BY'
+export function filterPlants(filters){
+  let filteredPlants = store.getState().plants.all
+  let plantProps = Object.keys(filters)
+  for(let i = 0; i < plantProps.length; i++){
+    filteredPlants = filteredPlants.filter(plant=>{
+      return plant[plantProps[i]] == filters[plantProps[i]]
+    })
+  }
+  return({
+    type: FILTER_BY,
+    plants: filteredPlants
+  })
+}
