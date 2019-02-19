@@ -9,7 +9,7 @@ module.exports = function(app){
   app.get('/plants', plants.getAll)
   app.post('/plants', adminMiddleWare, plants.addPlant)
   app.patch('/plants/:id', adminMiddleWare, plants.updatePlant)
-
+  app.delete('/plants/:id', adminMiddleWare, plants.deletePlant)
   app.post('/login', auth.adminLogin)
 }
 

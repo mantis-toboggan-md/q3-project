@@ -8,6 +8,9 @@ class Stock extends React.Component{
   componentWillMount(){
     this.props.fetchPlants()
   }
+  componentWillUpdate(){
+    this.props.fetchPlants()
+  }
   render(){
     let items = this.props.plants.map(plant=>{
       return <StockItem key = {plant.id} item = {plant}/>

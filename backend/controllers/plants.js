@@ -20,5 +20,11 @@ module.exports = {
     knex('plants').update(req.body).where('id', '=', req.params.id).then(()=>{
       res.status(200).end('plant updated')
     })
+  },
+
+  deletePlant: (req,res)=>{
+    knex('plants').where('id', '=', req.params.id).delete().then(()=>{
+      res.status(200).end('plant deleted')
+    })
   }
 }

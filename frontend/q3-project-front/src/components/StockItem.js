@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updatePlant } from '../actions/admin'
+import { updatePlant, deletePlant } from '../actions/admin'
 import { FormGroup, Input, FormText, Button} from 'reactstrap'
 
 class StockItem extends React.Component {
@@ -17,6 +17,9 @@ class StockItem extends React.Component {
 
   submitUpdate = ()=>{
     this.props.updatePlant(this.state)
+  }
+  submitDelete = ()=>{
+    this.props.deletePlant(this.state)
   }
 
   render(){
@@ -36,6 +39,7 @@ class StockItem extends React.Component {
           {inputs}
         </FormGroup>
         <Button onClick = {this.submitUpdate}>Update</Button>
+        <Button onClick = {this.submitDelete}>Delete</Button>
       </div>
     )
   }
@@ -45,6 +49,9 @@ const mapDispatchToProps = dispatch=>{
   return{
     updatePlant: (plant)=>{
       dispatch(updatePlant(plant))
+    },
+    deletePlant: (plant)=>{
+      dispatch(deletePlant(plant))
     }
   }
 }

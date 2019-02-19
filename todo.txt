@@ -5,13 +5,16 @@ front:
     cart/checkout
     admin login X
     admin update page X
+
   admin update page X
   add new item admin page
-  admin route protection
+  delete item on admin page X
+  admin route protection X
   auth, admin login X
+
+  checkout page should only submit if cart doesn't exceed inventory
   improve info display on plants
   style
-  checkout page should only submit if cart doesn't exceed inventory
   add navbar
   cart dropdown on index
   filter drawer on index
@@ -20,3 +23,4 @@ front:
 back:
 
   checkout route to update inventory
+  delete item route X

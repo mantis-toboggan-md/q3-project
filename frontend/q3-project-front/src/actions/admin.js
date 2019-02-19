@@ -70,3 +70,29 @@ export function updatePlant(plant){
     }
   }
 }
+
+export const DELETE_PLANT = 'DELETE_PLANT'
+export function deletePlant(plant){
+  const token = localStorage.getItem('token')
+  return async (dispatch)=>{
+    const response = await fetch(`http://localhost:8082/plants/${plant.id}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': token
+      }
+    })
+    if(response.status == 200){
+      dispatch({
+        type: DELETE_PLANT,
+        didDelete: true
+      })
+    } else {
+      let errmsg = await response.text()
+      alert(errmsg)
+      dispatch({
+        type:DELETE_PLANT,
+        didDelete: false
+      })
+    }
+  }
+}
