@@ -1,0 +1,20 @@
+front:
+
+  react-router-dom to separate index into pages:
+    items
+    cart/checkout
+    admin login
+    admin update page
+  admin update page
+  auth, admin login
+  improve info display on plants
+  style
+  checkout page should only submit if cart doesn't exceed inventory
+  add navbar
+  cart dropdown on index
+  filter drawer on index
+  filter by name
+
+back:
+
+  checkout route to update inventory

@@ -24,8 +24,9 @@ class Plant extends React.Component{
   add = ()=>{
     if(this.state.quantity === 0){
       this.setState({error: 'Enter a quantity'})
+    } else{
+      this.props.addToCart(this.props.plant, this.state.quantity)
     }
-  this.props.addToCart(this.props.plant, this.state.quantity)
   }
 
   render(){
