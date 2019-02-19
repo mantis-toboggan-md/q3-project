@@ -3,10 +3,12 @@ front:
   react-router-dom to separate index into pages:
     items
     cart/checkout
-    admin login
-    admin update page
-  admin update page
-  auth, admin login
+    admin login X
+    admin update page X
+  admin update page X
+  add new item admin page
+  admin route protection
+  auth, admin login X
   improve info display on plants
   style
   checkout page should only submit if cart doesn't exceed inventory

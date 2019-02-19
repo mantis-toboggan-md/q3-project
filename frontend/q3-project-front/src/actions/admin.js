@@ -16,6 +16,8 @@ export const login = (user)=>{
     })
     dispatch(fetching(false))
     if(response.status == 200){
+      let token = await response.text()
+      localStorage.setItem('token', token)
       dispatch({
         type: LOGIN,
         isLogged: true
@@ -41,6 +43,7 @@ export function fetching(isFetching){
 
 export const UPDATE_PLANT = 'UPDATE_PLANT'
 export function updatePlant(plant){
+  const token = localStorage.getItem('token')
   return async (dispatch)=>{
     let data = await JSON.stringify(plant)
     const response = await fetch(`http://localhost:8082/plants/${plant.id}`, {
@@ -48,6 +51,7 @@ export function updatePlant(plant){
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        'authorization': token
       },
       body: data
     })

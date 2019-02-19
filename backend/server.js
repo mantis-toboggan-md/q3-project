@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 8082;
 const cowsay = require('cowsay')
 const flash = require('connect-flash');
+const cors = require('cors')
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
@@ -14,6 +15,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, "/public/")));
 var routes_setter = require('./config/routes.js');
 routes_setter(app);
+
+app.use(cors())
 
 app.listen(port, function() {
   console.clear()
