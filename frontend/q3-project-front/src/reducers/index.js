@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { PLANTS_RECEIVED, FETCHING, FILTER_BY} from '../actions'
 import { ADD_TO_CART, UPDATE_QUANTITY } from '../actions/cart'
-import { LOGIN } from '../actions/login'
+import { LOGIN, UPDATE_PLANT } from '../actions/admin'
 
 
 
@@ -45,12 +45,17 @@ function cart(state = {cart: []}, action){
   }
 }
 
-function auth(state={isLogged:false}, action){
+function auth(state={isLogged:false, didUpdate:false}, action){
   switch(action.type){
     case LOGIN:
       return{
         ...state,
         isLogged: action.isLogged
+      }
+    case UPDATE_PLANT:
+      return{
+        ...state,
+        didUpdate: false
       }
     default:
       return state

@@ -6,7 +6,6 @@ module.exports = {
 
 
   adminLogin: (req,res)=>{
-    console.log(req.body)
     knex('users').where('username', req.body.username).then(results=>{
       if(!results[0]){
         res.status(404).end('username not found')

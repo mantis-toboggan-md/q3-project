@@ -15,7 +15,6 @@ export const login = (user)=>{
       body: userData
     })
     dispatch(fetching(false))
-    console.log(response)
     if(response.status == 200){
       dispatch({
         type: LOGIN,
@@ -38,4 +37,32 @@ export function fetching(isFetching){
     type: FETCHING,
     isFetching: isFetching
   })
+}
+
+export const UPDATE_PLANT = 'UPDATE_PLANT'
+export function updatePlant(plant){
+  return async (dispatch)=>{
+    let data = await JSON.stringify(plant)
+    const response = await fetch(`http://localhost:8082/plants/${plant.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: data
+    })
+    if(response.status == 200){
+      dispatch({
+        type: UPDATE_PLANT,
+        didUpdate: true
+      })
+    } else{
+      let errmsg = await response.text()
+      alert(errmsg)
+      dispatch({
+        type:UPDATE_PLANT,
+        didUpdate: false
+      })
+    }
+  }
 }
