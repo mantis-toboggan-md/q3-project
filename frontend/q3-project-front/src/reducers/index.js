@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { PLANTS_RECEIVED, FETCHING, FILTER_BY, FILTER_NAME} from '../actions'
-import { ADD_TO_CART, UPDATE_QUANTITY } from '../actions/cart'
+import { ADD_TO_CART, UPDATE_QUANTITY, GET_CART, CLEAR_CART } from '../actions/cart'
 import { LOGIN, UPDATE_PLANT, DELETE_PLANT } from '../actions/admin'
 
 
@@ -44,6 +44,16 @@ function cart(state = {cart: []}, action){
         cart: action.cart
       }
     case UPDATE_QUANTITY:
+      return {
+        ...state,
+        cart: action.cart
+      }
+    case GET_CART:
+      return {
+        ...state,
+        cart: action.cart
+      }
+    case CLEAR_CART:
       return {
         ...state,
         cart: action.cart

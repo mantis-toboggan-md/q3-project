@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPlants } from '../actions'
+import { getCart } from '../actions/cart'
 import Inventory from './Inventory'
 import Filters from './Filters'
 import Cart from './Cart'
@@ -21,6 +22,7 @@ import tankBG from '../img/tankStitchcropped.jpg'
 class Main extends React.Component {
   componentDidMount() {
     this.props.getPlants()
+    this.props.getCart()
   }
   render(){
     let inventory = this.props.isFetching ? <Spinner color="primary" /> : <Inventory/>
@@ -55,7 +57,9 @@ const mapDispatchToProps = dispatch => {
    getPlants: () => {
      dispatch(fetchPlants())
    },
-
+   getCart: ()=>{
+     dispatch(getCart())
+   }
  }
 }
 

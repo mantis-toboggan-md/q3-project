@@ -1,9 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import CartItem from './CartItem'
-import {updateQuantity} from '../actions/cart'
+import Header from './Header'
+import {updateQuantity, getCart, clearCart} from '../actions/cart'
 import {
   Table,
+  Container,
    Col,
    Row,
    Button,
@@ -17,10 +20,38 @@ import {
   CardFooter,
   CardTitle
 } from 'reactstrap'
+import tankBG from '../img/nanaClose.JPG'
+
 
 class Checkout extends React.Component {
+  state = {
+    redirect: false
+  }
+  componentDidMount(){
+    this.props.getCart()
+  }
 
-
+ sendOrder = async ()=>{
+   let plants = this.props.cart.map(plant=>{
+     return({
+       id: plant.plant.id,
+       quantity: plant.quantity
+          })
+        })
+        const response = await fetch('http://localhost:8082/order',
+        {
+          method:'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(plants)
+        })
+        if(response.status === 200){
+          this.props.clearCart()
+          this.setState({redirect: true})
+        }
+  }
 
   render(){
     let cartItems = this.props.cart.map(item=>{
@@ -31,8 +62,17 @@ class Checkout extends React.Component {
     },0)
     let taxes = (subtotal * 0.08).toFixed(2)
     let total = (subtotal + parseFloat(taxes)).toFixed(2)
+    if (this.state.redirect) {
+       return <Redirect to='/complete'/>;
+     }
     return(
-      <div className='shopping-cart'>
+      <div className='shopping-cart parallax'>
+        <Header isCheckout = {true}/>
+        <Container>
+        <div className = 'static-bg parallax_layer parallax_layer-back'>
+          <img src = {tankBG}></img>
+        </div>
+        <div className = 'parallax_layer parallax_layer-front'>
         <Row>
           <Col xs = {{size: 8, offset:2}}>
             <Card>
@@ -45,6 +85,7 @@ class Checkout extends React.Component {
                     <tr>
                       <th>Name</th>
                       <th>Price</th>
+                      <th>Quantity</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -54,9 +95,15 @@ class Checkout extends React.Component {
               </CardBody>
               <CardFooter>
                 <div className = 'totals'>
+                <span>
                   subtotal: ${subtotal.toFixed(2)}
+                </span>
+                <span>
                   taxes: ${taxes}
+                </span>
+                <span>
                   total: ${total}
+                </span>
                 </div>
               </CardFooter>
             </Card>
@@ -115,19 +162,19 @@ class Checkout extends React.Component {
                   <Col md={4}>
                     <FormGroup>
                       <Label for="cardName">Card Holder</Label>
-                      <Input type="text" name="cardName" id="cardName"/>
+                      <Input type="text" name="cardName" id="cardName" disabled/>
                     </FormGroup>
                   </Col>
                   <Col md={2}>
                     <FormGroup>
                       <Label for="CCV">CCV</Label>
-                      <Input type="number" name="CCV" id="CCV"/>
+                      <Input type="number" name="CCV" id="CCV" disabled/>
                     </FormGroup>
                   </Col>
                   <Col md={2}>
                     <FormGroup>
                       <Label for="exp-date">Expiration</Label>
-                      <Input type="string" name="exp-date" id="exp-date" placeholder = 'mm/yy'/>
+                      <Input type="string" name="exp-date" id="exp-date" placeholder = 'mm/yy' disabled/>
                     </FormGroup>
                   </Col>
                 </Row>
@@ -135,16 +182,18 @@ class Checkout extends React.Component {
                   <Col md={6}>
                     <FormGroup>
                       <Label for="card-number">Card Number</Label>
-                      <Input type="string" name="card-numer" id="card-number"/>
+                      <Input type="string" name="card-numer" id="card-number" disabled/>
                     </FormGroup>
                   </Col>
                 </Row>
-                <Button>Submit Order</Button>
+                <Button onClick = {this.sendOrder}>Submit Order</Button>
               </Form>
             </CardBody>
           </Card>
         </Col>
         </Row>
+      </div>
+      </Container>
       </div>
     )
   }
@@ -152,12 +201,19 @@ class Checkout extends React.Component {
 
 const mapStateToProps = state => ({
   cart: state.cart.cart,
+  plants: state.plants.all
 })
 
 const mapDispatchToProps = dispatch =>{
   return {
     updateItem: (plant, quantity)=>{
       dispatch(updateQuantity(plant,quantity))
+    },
+    getCart: ()=>{
+      dispatch(getCart())
+    },
+    clearCart: ()=>{
+      dispatch(clearCart())
     }
   }
 }

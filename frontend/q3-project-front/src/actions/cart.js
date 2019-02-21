@@ -4,6 +4,7 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 export function addToCart(plant, quantity){
   let oldCart = store.getState().cart.cart
   let newCart = [...oldCart, {plant: plant, quantity: quantity}]
+  localStorage.setItem('cart', JSON.stringify(newCart))
   return({
     type: ADD_TO_CART,
     cart: newCart
@@ -29,8 +30,35 @@ export function updateQuantity(plant, quantity){
       }
     })
   }
+  localStorage.setItem('cart', JSON.stringify(newCart))
   return({
     type: UPDATE_QUANTITY,
     cart: newCart
+  })
+}
+
+export const GET_CART = 'GET_CART'
+export function getCart(){
+  let savedCart = localStorage.getItem('cart')
+  if(savedCart){
+    savedCart = JSON.parse(savedCart)
+    return({
+      type:GET_CART,
+      cart:savedCart
+    })
+  } else{
+    return({
+      type: GET_CART,
+      cart: []
+    })
+  }
+}
+
+export const CLEAR_CART = 'CLEAR_CART'
+export function clearCart(){
+  localStorage.removeItem('cart')
+  return({
+    type: CLEAR_CART,
+    cart: []
   })
 }

@@ -26,5 +26,14 @@ module.exports = {
     knex('plants').where('id', '=', req.params.id).delete().then(()=>{
       res.status(200).end('plant deleted')
     })
+  },
+
+  updateQuantity: (req,res)=>{
+    let plants = req.body
+    Promise.all(plants.map((plant)=>{
+      return knex('plants').where('id', plant.id).increment('stock',(plant.quantity*-1) )
+    })).then(()=>{
+      res.status(200).end('order completed')
+    })
   }
 }

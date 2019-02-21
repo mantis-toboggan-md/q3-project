@@ -7,23 +7,25 @@ front:
     admin update page X
 
   admin update page X
-  add new item admin page
   delete item on admin page X
   admin route protection X
   auth, admin login X
   display subtotal in cart, total in checkout X
+  persist cart in localstorage(?) X
 
-  checkout page should only submit if cart doesn't exceed inventory
   improve info display on plants X
   style index X
-  style checkout
   add navbar X
   cart dropdown on index X
   filter drawer on index X
   filter by name X
+  checkout page should only submit if cart doesn't exceed inventory X
+  style checkout X
 
+  add new item admin page
+  do something if an order went through X
 
 back:
 
-  checkout route to update inventory
   delete item route X
+  checkout route to update inventory X

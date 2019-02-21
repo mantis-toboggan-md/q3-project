@@ -1,6 +1,7 @@
 import React from 'react'
 import Cart from './Cart'
 import Filters from './Filters'
+import {Link} from 'react-router-dom'
 import {
   Collapse,
   Navbar,
@@ -37,6 +38,21 @@ class Header extends React.Component{
    }
 
   render(){
+    if(this.props.isCheckout){
+      return (
+        <div id = 'header'>
+          <Navbar light expand="md" sticky-top>
+            <NavbarBrand className="text-info" href="#"><Link to = '/'>plant store or whatever</Link></NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </div>
+      )
+    } else{
+
     return (
       <div id = 'header'>
         <Navbar light expand="md" sticky-top>
@@ -48,7 +64,7 @@ class Header extends React.Component{
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink className="text-info" href="/checkout">Checkout</NavLink>
+                <NavLink className="text-info" href="#"><Link to = '/checkout'>Checkout</Link></NavLink>
               </NavItem>
               <NavItem>
               </NavItem>
@@ -78,6 +94,7 @@ class Header extends React.Component{
       </Row>
       </div>
     )
+  }
   }
 }
 

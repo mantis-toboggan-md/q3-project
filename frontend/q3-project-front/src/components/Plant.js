@@ -21,7 +21,7 @@ import {
 
 class Plant extends React.Component{
   state = {
-    quantity: 0,
+    quantity: 1,
     error: ''
   }
 
@@ -31,17 +31,21 @@ class Plant extends React.Component{
   }
 
   add = ()=>{
+    console.log(typeof this.state.quantity)
     if(this.state.quantity === 0){
       this.setState({error: 'Enter a quantity'})
-    } else{
+    } else if(this.state.quantity > this.props.plant.stock) {
+      this.setState({error: `Only ${this.props.plant.stock} in stock`})
+    }
+    else{
       this.props.addToCart(this.props.plant, this.state.quantity)
-      this.setState({quantity:0})
+      this.setState({quantity:1, error: ''})
       this.forceUpdate()
     }
   }
 
   render(){
-    let errmsg = this.state.error ? <FormText>Enter a quantity</FormText> : ''
+    let errmsg = this.state.error ? <FormText>{this.state.error}</FormText> : ''
     return(
       <Container className = 'plant-preview'>
         <Col md = {{size:10, offset:1}}>
@@ -65,14 +69,10 @@ class Plant extends React.Component{
           <CardFooter>
             <FormGroup>
               <Row>
-              <Col xs = {{size: 4, offset: 2}}>
-                <Input onChange = {this.handleChange} placeholder = 'quantity'/>
+                <Input type = 'number' onChange = {this.handleChange} placeholder = 'quantity' value = {this.state.quantity}/>
                 {errmsg}
-              </Col>
-              <Col xs = {{size: 6}}>
-                <Button outline color= 'primary' onClick = {this.add}>Add to Cart</Button><br/>
-              </Col>
-            </Row>
+                <Button outline color= 'info' onClick = {this.add}>Add to Cart</Button><br/>
+              </Row>
           </FormGroup>
           </CardFooter>
         </Card>

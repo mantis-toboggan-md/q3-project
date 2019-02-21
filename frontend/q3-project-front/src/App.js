@@ -4,6 +4,7 @@ import Main from './components/Main'
 import Login from './components/Login'
 import Stock from './components/Stock'
 import Checkout from './components/Checkout'
+import Complete from './components/Complete'
 import { Route, Link } from 'react-router-dom'
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
         <Route exact path="/login" component={Login}/>
         <Route exact path = '/stock' component = {Stock}/>
         <Route exact path = '/checkout' component = {Checkout}/>
+        <Route exact path = '/complete' component = {Complete}/>
       </div>
     );
   }
