@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { Button, InputGroup, Input} from 'reactstrap'
+import { Button, InputGroup, Input, Row, Col} from 'reactstrap'
 
 class CartItem extends React.Component{
   state = {
-    quantity: 0
+    quantity: this.props.item.quantity
   }
   handleChange = (e)=>{
     this.setState({quantity: e.target.value})
@@ -17,13 +17,17 @@ class CartItem extends React.Component{
       <tr>
         <td>{this.props.item.plant.name}</td>
         <td>
-          ${this.props.item.plant.price} <span className="text-muted">(x{this.props.item.quantity})</span>
-          <InputGroup>
-            <Input  onChange = {this.handleChange} value = {this.state.quantity}/>
-          </InputGroup>
-        <Button outline color="warning" onClick = {this.update} size = 'sm'>Update</Button>
+          ${(this.state.quantity * this.props.item.plant.price).toFixed(2)}<br/>
+        <span className = 'muted'>(${this.props.item.plant.price})</span>
+        </td>
+        <td>
+          <Col id = 'update-col'>
+            <Input className = 'update-quantity' onChange = {this.handleChange} value = {this.state.quantity}/>
+            <Button outline color="info" onClick = {this.update} size = 'sm'>Update</Button>
+          </Col>
         </td>
       </tr>
+
     )
   }
 }

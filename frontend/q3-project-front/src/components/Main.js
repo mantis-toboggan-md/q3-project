@@ -4,12 +4,19 @@ import { fetchPlants } from '../actions'
 import Inventory from './Inventory'
 import Filters from './Filters'
 import Cart from './Cart'
+import FilterNames from './FilterNames'
+import Header from './Header'
 import {
   Container,
   Row,
   Col,
-  Spinner
+  Spinner,
+  UncontrolledCollapse,
+  CardBody,
+  Card,
+  Button
 } from 'reactstrap'
+import tankBG from '../img/tankStitchcropped.jpg'
 
 class Main extends React.Component {
   componentDidMount() {
@@ -20,15 +27,18 @@ class Main extends React.Component {
     return(
       <Container fluid>
         <Row>
-          <Col xs = '3'>
-            <Filters/>
-          </Col>
-          <Col xs = {{size:6}}>
-            {inventory}
-          </Col>
-          <Col xs = '3'>
-            <Cart/>
-          </Col>
+          <Header/>
+        </Row>
+        <Row className = 'parallax'>
+          <div className ='parallax_layer parallax_layer-back'>
+            <img className = 'parallax-img' src = {tankBG}></img>
+          </div>
+          <div className = 'parallax_layer parallax_layer-front'>
+            <Col xs = {{size:6, offset: 3}} id = 'inventory-list'>
+              <FilterNames/>
+              {inventory}
+            </Col>
+          </div>
         </Row>
       </Container>
     )

@@ -7,7 +7,16 @@ import {
   Col,
   Button,
   InputGroup,
-  Input
+  Input,
+  Card,
+  CardHeader,
+  CardFooter,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardImg,
+  FormText,
+  FormGroup
 } from 'reactstrap'
 
 class Plant extends React.Component{
@@ -26,42 +35,48 @@ class Plant extends React.Component{
       this.setState({error: 'Enter a quantity'})
     } else{
       this.props.addToCart(this.props.plant, this.state.quantity)
+      this.setState({quantity:0})
+      this.forceUpdate()
     }
   }
 
   render(){
-    let errmsg = this.state.error ? <span className ='cart-error'>{this.state.error}</span> : ''
+    let errmsg = this.state.error ? <FormText>Enter a quantity</FormText> : ''
     return(
       <Container className = 'plant-preview'>
-        <Row>
-          <Col xs = {{size: 4, offset: 4}}>
-            <img src = {this.props.plant.photo_url} alt = {this.props.plant.name}></img>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs = '12'>
-            {this.props.plant.name}
-          </Col>
-        </Row>
-        <Row>
-          <Col xs = {{size: 2, offset: 5}}>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs = '12'>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs = '12'>
-            <InputGroup>
-              Quantity:
-              <Input  onChange = {this.handleChange}/>
-              {errmsg}
-            </InputGroup>
-
-            <Button outline color= 'primary' onClick = {this.add}>Add to Cart</Button>
-          </Col>
-        </Row>
+        <Col md = {{size:10, offset:1}}>
+        <Card>
+          <div className = 'card-img-container'>
+            <CardImg height = "30%" src = {this.props.plant.photo_url} alt = {this.props.plant.name}></CardImg>
+          </div>
+          <CardBody>
+            <CardTitle>
+              {this.props.plant.name}
+              <span color = 'muted'> (${this.props.plant.price})</span>
+            </CardTitle>
+            <CardText>
+            Light: {this.props.plant.light_requirement} |
+              CO2: {this.props.plant.co2_need} |
+              Structure: {this.props.plant.structure} |
+              Placement: {this.props.plant.size} |
+              Growth Rate: {this.props.plant.growth_rate}
+            </CardText>
+          </CardBody>
+          <CardFooter>
+            <FormGroup>
+              <Row>
+              <Col xs = {{size: 4, offset: 2}}>
+                <Input onChange = {this.handleChange} placeholder = 'quantity'/>
+                {errmsg}
+              </Col>
+              <Col xs = {{size: 6}}>
+                <Button outline color= 'primary' onClick = {this.add}>Add to Cart</Button><br/>
+              </Col>
+            </Row>
+          </FormGroup>
+          </CardFooter>
+        </Card>
+      </Col>
       </Container>
     )
   }

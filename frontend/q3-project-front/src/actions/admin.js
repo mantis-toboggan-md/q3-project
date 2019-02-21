@@ -90,7 +90,7 @@ export function deletePlant(plant){
       let errmsg = await response.text()
       alert(errmsg)
       dispatch({
-        type:DELETE_PLANT,
+        type: DELETE_PLANT,
         didDelete: false
       })
     }

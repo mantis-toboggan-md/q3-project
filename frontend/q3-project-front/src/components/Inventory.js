@@ -19,7 +19,7 @@ class Inventory extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  plants: state.plants.filtered
+  plants: state.plants.filteredNames
 })
 
 export default connect(

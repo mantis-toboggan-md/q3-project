@@ -5,7 +5,7 @@ const moment = require('moment')
 module.exports = {
 
   getAll: (req,res)=>{
-    knex('plants').then((response)=>{
+    knex('plants').orderBy('name').then((response)=>{
       res.json(response)
     }).catch(err=>console.error(err))
   },

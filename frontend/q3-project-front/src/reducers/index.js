@@ -1,17 +1,18 @@
 import { combineReducers } from 'redux'
-import { PLANTS_RECEIVED, FETCHING, FILTER_BY} from '../actions'
+import { PLANTS_RECEIVED, FETCHING, FILTER_BY, FILTER_NAME} from '../actions'
 import { ADD_TO_CART, UPDATE_QUANTITY } from '../actions/cart'
 import { LOGIN, UPDATE_PLANT, DELETE_PLANT } from '../actions/admin'
 
 
 
-function plants(state = {all: [], isFetching: false, filtered: []}, action){
+function plants(state = {all: [], isFetching: false, filtered: [], filteredNames: [], filterString: ''}, action){
   switch (action.type){
     case PLANTS_RECEIVED:
       return {
         ...state,
         all: action.plants,
-        filtered: action.plants
+        filtered: action.plants,
+        filteredNames: action.plants
       }
     case FETCHING:
       return {
@@ -21,8 +22,15 @@ function plants(state = {all: [], isFetching: false, filtered: []}, action){
     case FILTER_BY:
       return{
         ...state,
-        filtered: action.plants
+        filtered: action.plants,
+        filteredNames: action.plants
       }
+    case FILTER_NAME:
+    return {
+      ...state,
+      filteredNames: action.filteredPlants,
+      filterString: action.filterString
+    }
     default:
       return state
   }

@@ -38,3 +38,16 @@ export function filterPlants(filters){
     plants: filteredPlants
   })
 }
+
+export const FILTER_NAME = 'FILTER_NAME'
+export function filterNames(string){
+  const regexp = new RegExp(`(${string})`, 'i')
+  const filteredPlants = string.length ? store.getState().plants.filtered.filter((plant)=>{
+    return plant.name.search(regexp) != -1
+  }) : store.getState().plants.filtered
+  return ({
+    type: FILTER_NAME,
+    filteredPlants: filteredPlants,
+    filterString: string
+  })
+}
