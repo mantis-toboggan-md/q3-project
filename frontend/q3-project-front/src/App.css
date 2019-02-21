@@ -49,6 +49,10 @@ a {
 .plant-preview input{
   max-width: 70px;
 }
+.stockmsg{
+  opacity: 0.6;
+  color: #ffc107;
+}
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -101,7 +105,7 @@ input[type="number"]::-webkit-inner-spin-button {
   border-color: rgb(70,70,70);
   color: rgba(23,162,184, 0.6);
 }
-#header .update-quantity{
+#header .update-quantity,{
   max-width: 60px;
   padding: 0px !important;
   background-color: rgb(60,60,60) !important;
@@ -109,6 +113,15 @@ input[type="number"]::-webkit-inner-spin-button {
   color: rgba(23,162,184, 0.6) !important;
   margin: 0px !important;
 }
+.stock-inputs input, .modal-body input{
+  background-color: rgb(60,60,60) !important;
+  border-color: rgb(70,70,70) !important;
+  color: rgba(23,162,184, 0.6) !important;
+}
+.stock-inputs .card , .modal-body, .modal-footer{
+  background-color: rgb(40,40,40) !important;
+}
+
 #update-col{
   display:flex !important;
   flex-direction:column !important;

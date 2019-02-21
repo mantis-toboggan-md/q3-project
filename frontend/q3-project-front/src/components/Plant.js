@@ -45,6 +45,7 @@ class Plant extends React.Component{
   }
 
   render(){
+    let stockmsg = this.props.plant.stock < 10  ? this.props.plant.stock > 0 ? <span className = 'stockmsg'>Only {this.props.plant.stock} left!</span> : <span className = 'stockmsg'>Out of stock</span> : ''
     let errmsg = this.state.error ? <FormText>{this.state.error}</FormText> : ''
     return(
       <Container className = 'plant-preview'>
@@ -56,7 +57,8 @@ class Plant extends React.Component{
           <CardBody>
             <CardTitle>
               {this.props.plant.name}
-              <span color = 'muted'> (${this.props.plant.price})</span>
+              <span color = 'muted'> (${this.props.plant.price})</span><br/>
+              {stockmsg}
             </CardTitle>
             <CardText>
             Light: {this.props.plant.light_requirement} |

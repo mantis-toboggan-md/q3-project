@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updatePlant, deletePlant } from '../actions/admin'
-import { FormGroup, Input, FormText, Button} from 'reactstrap'
+import { FormGroup, Input, FormText, Button, Card, CardBody, CardFooter, CardTitle} from 'reactstrap'
 
 class StockItem extends React.Component {
   state = {...this.props.item}
@@ -34,12 +34,20 @@ class StockItem extends React.Component {
     })
     return(
       <div>
-        {this.props.item.name}
-        <FormGroup>
-          {inputs}
-        </FormGroup>
-        <Button onClick = {this.submitUpdate}>Update</Button>
-        <Button onClick = {this.submitDelete}>Delete</Button>
+        <Card>
+          <CardTitle>
+            {this.props.item.name}
+          </CardTitle>
+          <CardBody>
+            <FormGroup>
+              {inputs}
+            </FormGroup>
+          </CardBody>
+          <CardFooter>
+            <Button outline color='info' onClick = {this.submitUpdate}>Update</Button>
+            <Button outline color = 'warning' onClick = {this.submitDelete}>Delete</Button>
+          </CardFooter>
+        </Card>
       </div>
     )
   }
