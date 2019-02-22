@@ -35,7 +35,7 @@ exports.seed = function(knex, Promise) {
           light_requirement: 'Low',
           co2_need: 'Low',
           structure: 'Moss',
-          size: 'Foregound',
+          size: 'Foreground',
           isFloating: true,
           price: '5.00',
           photo_url: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Javamoos.jpg',
@@ -50,7 +50,7 @@ exports.seed = function(knex, Promise) {
           size: 'Surface',
           isFloating: true,
           price: '5.00',
-          photo_url: 'https://commons.wikimedia.org/wiki/File:Hydrocotyle_leucocephala_B.jpg',
+          photo_url: 'https://m.media-amazon.com/images/S/aplus-seller-content-images-us-east-1/ATVPDKIKX0DER/A2YV2RR0EWEZ5/B00M3COKZO/MOskZonKQ2mu._UX970_TTW__.jpg',
           stock: 30
         },
         {
@@ -122,7 +122,7 @@ exports.seed = function(knex, Promise) {
           size: 'Midground',
           isFloating: true,
           price: '5.00',
-          photo_url: 'https://meethepet.com/wp-content/uploads/2018/10/Fissidens-fontanus1.jpg',
+          photo_url: 'https://aquascapers.files.wordpress.com/2012/07/fissidens_fontanus.jpg',
           stock: 30
         },
         {
@@ -151,7 +151,7 @@ exports.seed = function(knex, Promise) {
         },
         {
           name: 'Staurogyne repens',
-          growth_rate: 'Medium,',
+          growth_rate: 'Medium',
           light_requirement: 'Medium',
           co2_need: 'Medium',
           structure: 'Stem',
@@ -160,7 +160,151 @@ exports.seed = function(knex, Promise) {
           price: '5.00',
           photo_url: 'https://aquaticmag.com/wp-content/uploads/2014/07/Staurogyne-Repens-049-Aquatic-plant-for-sale-and-where-to-buy-Aquaticmag.jpg',
           stock: 0
-        }
+        },
+        {
+          name: 'Heteranthera zosterifolia (Stargrass)',
+          growth_rate: 'Fast',
+          light_requirement: 'Medium',
+          co2_need: 'Low',
+          structure: 'Stem',
+          size: 'Background',
+          isFloating: false,
+          price: '10.00',
+          photo_url: 'https://www.liquidcreations.co/wp-content/uploads/2018/02/IMG_20160604_131828.jpg',
+          stock: 20
+        },
+        {
+          name: 'Ludwigia repens',
+          growth_rate: 'Fast',
+          light_requirement: 'Medium',
+          co2_need: 'Low',
+          structure: 'Stem',
+          size: 'Background',
+          isFloating: false,
+          price: '7.00',
+          photo_url: 'https://shop.plantedaquariumscentral.com/assets/images/ludwigia20repens20broad20leaf.jpg',
+          stock: 30
+        },
+        {
+          name: 'Ammannia gracilis',
+          growth_rate: 'Fast',
+          light_requirement: 'Medium',
+          co2_need: 'Medium',
+          structure: 'Stem',
+          size: 'Background',
+          isFloating: false,
+          price: '8.00',
+          photo_url: 'https://aquaticworldinfo.com/wp-content/uploads/2017/09/Ammannia-Gracilis.jpg',
+          stock: 10
+        },
+        {
+          name: 'Echinodorus palifolius',
+          growth_rate: 'Fast',
+          light_requirement: 'Medium',
+          co2_need: 'Low',
+          structure: 'Rosette',
+          size: 'Background',
+          isFloating: false,
+          price: '5.00',
+          photo_url: 'https://www.aqvium.ru/images/plant/rosette-plants/Echinodorus/68-3.Echinodorus-ozelot.jpg',
+          stock: 30
+        },
+        {
+          name: 'Aponogeton boivinianus',
+          growth_rate: 'Fast',
+          light_requirement: 'Medium',
+          co2_need: 'Low',
+          structure: 'Rosette',
+          size: 'Background',
+          isFloating: false,
+          price: '7.00',
+          photo_url: 'https://www.aquasabi.de/vcdn/images/item/zoom/ZViG216Uxg/aponogeton-boivinianus-2.jpg',
+          stock: 20
+        },
+        {
+          name: 'Riccardia spp.',
+          growth_rate: 'Slow',
+          light_requirement: 'Medium',
+          co2_need: 'Low',
+          structure: 'Moss',
+          size: 'Foreground',
+          isFloating: true,
+          price: '5.00',
+          photo_url: 'https://www.flowgrow.de/db/images/wasserpflanzen/detail/riccardia-spp-514a32a858b60.jpg',
+          stock: 10
+        },
+        {
+          name: 'Cryptocoryne x willisii "lucens"',
+          growth_rate: 'Slow',
+          light_requirement: 'Low',
+          co2_need: 'Low',
+          structure: 'Rosette',
+          size: 'Foreground',
+          isFloating: false,
+          price: '4.00',
+          photo_url: 'https://www.plantedtank.net/forums/images/plants/112_Cryptocoryne_x_willisii_Cryptocoryne_x_willisii_lucens.e.jpg',
+          stock: 50
+        },
+        {
+          name: 'Cryptocoryne undulata',
+          growth_rate: 'Medium',
+          light_requirement: 'Low',
+          co2_need: 'Low',
+          structure: 'Rosette',
+          size: 'Foreground',
+          isFloating: false,
+          price: '5.00',
+          photo_url: 'https://www.aquaticplantcentral.com/forumapc/plantfinder/images/Araceae/Cryptocoryneundulata.jpg',
+          stock: 50
+        },
+        {
+          name: 'Hygrophila pinnatifida',
+          growth_rate: 'Medium',
+          light_requirement: 'High',
+          co2_need: 'Medium',
+          structure: 'Rosette',
+          size: 'Background',
+          isFloating: false,
+          price: '10.00',
+          photo_url: 'https://shop.plantedaquariumscentral.com/assets/images/hygropinn1.jpg',
+          stock: 10
+        },
+        {
+          name: 'Cabomba caroliniana var. caroliniana',
+          growth_rate: 'Fast',
+          light_requirement: 'Medium',
+          co2_need: 'Medium',
+          structure: 'Stem',
+          size: 'Background',
+          isFloating: false,
+          price: '10.00',
+          photo_url: 'http://www.pianetacquario.it/images/stories/FOTO/cabomba%20caroliniana.jpg',
+          stock: 20
+        },
+        {
+          name: 'Vesicularia montagnei (Christmas Moss)',
+          growth_rate: 'Slow',
+          light_requirement: 'Low',
+          co2_need: 'Low',
+          structure: 'Moss',
+          size: 'Foreground',
+          isFloating: true,
+          price: '5.00',
+          photo_url: 'https://www.azgardens.com/wp-content/uploads/2017/06/Christmas-Moss-Taxiphyllum-alternans.jpg',
+          stock: 20
+        },
+        {
+          name: 'Monosolenium tenerum (Liverwort)',
+          growth_rate: 'Medium',
+          light_requirement: 'Medium',
+          co2_need: 'Low',
+          structure: 'Moss',
+          size: 'Foreground',
+          isFloating: true,
+          price: '7.00',
+          photo_url: 'https://acimg.auctivacommerce.com/imgdata/0/2/9/3/2/4/webimg/4556923.jpg',
+          stock: 10
+        },
       ]);
     });
 };

@@ -23,11 +23,11 @@ front:
   style checkout X
   add new item admin page X
   do something if an order went through X
-
-
-
   add 'only X left!' to index X
   add 'out of stock' to index X
+
+
+
   style admin login
 
 back:

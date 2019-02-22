@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import StockItem from './StockItem'
 import { fetchPlants } from '../actions'
+import { deletePlant } from '../actions/admin'
 import {
   Container,
   Button,
@@ -24,9 +25,9 @@ class Stock extends React.Component{
     this.props.fetchPlants()
   }
 
-  componentWillUpdate(){
-    this.props.fetchPlants()
-  }
+  // componentWillUpdate(){
+  //   this.props.fetchPlants()
+  // }
 
   handleChange=(e)=>{
     e.persist()
@@ -40,6 +41,11 @@ class Stock extends React.Component{
   triggerModal = ()=>{
     this.setState(prevState=>
       ({modal:!prevState.modal}))
+  }
+
+  deletePlants = (plant)=>{
+    this.props.deletePlant(plant)
+    this.props.fetchPlants()
   }
 
   submitPlant = async()=>{
@@ -64,17 +70,17 @@ class Stock extends React.Component{
 
   render(){
     let items = this.props.plants.map(plant=>{
-      return <StockItem key = {plant.id} item = {plant}/>
+      return <StockItem key = {plant.id} item = {plant} deletePlant = {this.deletePlants}/>
     })
-    if (!this.props.isLogged) {
+    if (!localStorage.getItem('token')) {
       return <Redirect to="/login" />;
     }else {
-      let properties = Object.keys(this.props.plants[0]).splice(1,10)
+      let properties = Object.keys(this.props.plants[0] || {}).splice(1,10)
       let inputs = properties.map(prop=>{
         return (
             <div>
               <FormText color = 'muted'>{prop}</FormText>
-              <Input id = {prop} autoComplete = 'off' onChange = {this.handleChange}></Input>
+              <Input id={prop} autoComplete = 'off' onChange = {this.handleChange}></Input>
             </div>
         )
       })
@@ -107,6 +113,9 @@ const mapDispatchToProps = dispatch=>{
   return{
     fetchPlants: ()=>{
       dispatch(fetchPlants())
+    },
+    deletePlant: (plant)=>{
+      dispatch(deletePlant(plant))
     }
 
   }

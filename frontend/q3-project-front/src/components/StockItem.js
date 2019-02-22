@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updatePlant, deletePlant } from '../actions/admin'
+import{ fetchPlants } from '../actions'
+import { updatePlant, deletePlant} from '../actions/admin'
 import { FormGroup, Input, FormText, Button, Card, CardBody, CardFooter, CardTitle} from 'reactstrap'
 
 class StockItem extends React.Component {
@@ -58,8 +59,8 @@ const mapDispatchToProps = dispatch=>{
     updatePlant: (plant)=>{
       dispatch(updatePlant(plant))
     },
-    deletePlant: (plant)=>{
-      dispatch(deletePlant(plant))
+    fetchPlants: ()=>{
+      dispatch(fetchPlants())
     }
   }
 }

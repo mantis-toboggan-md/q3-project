@@ -3,17 +3,18 @@ const knex = require("../db/knex.js")
 const plants = require('../controllers/plants.js')
 const auth = require('../controllers/auth.js')
 const jwt = require('jsonwebtoken')
-
+const cors = require('cors')
 
 module.exports = function(app){
-  app.get('/plants', plants.getAll)
+  app.options('*', cors())
+  app.get('/plants', cors(), plants.getAll)
 
-  app.post('/order', plants.updateQuantity)
+  app.post('/order', cors(), plants.updateQuantity)
 
-  app.post('/plants', adminMiddleWare, plants.addPlant)
-  app.patch('/plants/:id', adminMiddleWare, plants.updatePlant)
-  app.delete('/plants/:id', adminMiddleWare, plants.deletePlant)
-  app.post('/login', auth.adminLogin)
+  app.post('/plants',cors(), adminMiddleWare, plants.addPlant)
+  app.patch('/plants/:id', cors(),adminMiddleWare, plants.updatePlant)
+  app.delete('/plants/:id', cors(),adminMiddleWare, plants.deletePlant)
+  app.post('/login', cors(),auth.adminLogin)
 }
 
 const adminMiddleWare = (req, res, next) => {
