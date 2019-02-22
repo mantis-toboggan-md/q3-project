@@ -14,7 +14,7 @@ class Cart extends React.Component {
 
   render(){
     let cartItems = this.props.cart.map(item=>{
-      return <CartItem key = {Date.now()} item = {item} updateItem = {this.props.updateItem}/>
+      return <CartItem key = {item.plant.id} item = {item} updateItem = {this.props.updateItem}/>
     })
     let total = this.props.cart.reduce((total, item)=>{
       return total += item.plant.price * item.quantity
