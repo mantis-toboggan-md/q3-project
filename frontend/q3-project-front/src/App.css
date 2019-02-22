@@ -244,7 +244,7 @@ input[type="number"]::-webkit-inner-spin-button {
    -webkit-transform: translateZ(0);
  }
  .parallax_layer-back {
-   transform: translateZ(-2px) scale(3);
+   transform: translateZ(-4px) scale(5);
    background:url("/tankStitchcropped.jpg") top right;
    z-index: -5;
  }
