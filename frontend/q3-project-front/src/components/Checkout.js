@@ -38,7 +38,7 @@ class Checkout extends React.Component {
        quantity: plant.quantity
           })
         })
-        const response = await fetch('http://localhost:8082/order',
+        const response = await fetch(`${process.env.REACT_APP_HEROKU_URL}/order`,
         {
           method:'POST',
           headers: {

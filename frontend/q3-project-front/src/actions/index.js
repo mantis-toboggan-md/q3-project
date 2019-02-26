@@ -14,7 +14,7 @@ export const PLANTS_RECEIVED = 'PLANTS_RECEIVED'
 export function fetchPlants(){
   return async (dispatch)=>{
     dispatch(fetching(true))
-    const response = await fetch('http://localhost:8082/plants')
+    const response = await fetch(`${process.env.REACT_APP_HEROKU_URL}/plants`)
     const json = await response.json()
     dispatch(fetching(false))
     dispatch({

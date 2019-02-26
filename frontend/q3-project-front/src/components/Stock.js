@@ -50,7 +50,7 @@ class Stock extends React.Component{
 
   submitPlant = async()=>{
     let token = localStorage.getItem('token')
-    let response = await fetch('http://localhost:8082/plants', {
+    let response = await fetch(`${process.env.REACT_APP_HEROKU_URL}/plants`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

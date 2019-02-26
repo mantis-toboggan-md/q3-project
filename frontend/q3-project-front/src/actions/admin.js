@@ -5,7 +5,7 @@ export const login = (user)=>{
   let userData = JSON.stringify(user)
   return async (dispatch)=>{
     dispatch(fetching(true))
-    const response = await fetch('http://localhost:8082/login',
+    const response = await fetch(`${process.env.REACT_APP_HEROKU_URL}/login`,
     {
       method:'POST',
       headers: {
@@ -46,7 +46,7 @@ export function updatePlant(plant){
   const token = localStorage.getItem('token')
   return async (dispatch)=>{
     let data = await JSON.stringify(plant)
-    const response = await fetch(`http://localhost:8082/plants/${plant.id}`, {
+    const response = await fetch(`${process.env.REACT_APP_HEROKU_URL}/plants/${plant.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export const DELETE_PLANT = 'DELETE_PLANT'
 export function deletePlant(plant){
   const token = localStorage.getItem('token')
   return async (dispatch)=>{
-    const response = await fetch(`http://localhost:8082/plants/${plant.id}`, {
+    const response = await fetch(`${process.env.REACT_APP_HEROKU_URL}/plants/${plant.id}`, {
       method: 'DELETE',
       headers: {
         'authorization': token
